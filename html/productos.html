@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mighty Chicken - Lista de Productos</title>
+    <link rel="stylesheet" href="/css/productos.css">
+</head>
+<body>
+    <header>
+        <h1>Mighty Chicken - Productos</h1>
+        <nav>
+            <button id="cancelarCompra">Cancelar Compra</button>
+            <button id="completarCompra">Completar Compra</button>
+        </nav>
+    </header> 
+    <main>
+        <section id="productosLista"> </section>
+        
+        <aside id="verDetalle" style="display: none;">
+            <h2 id="detalleNombre"></h2>
+            <img id="detalleImagen" src="" alt="Producto" />
+            <p id="detalleCategoria"></p>
+            <p id="detallePrecio"></p>
+            <label for="cantidadProducto">Cantidad:</label>
+            <input type="number" id="cantidadProducto" min="1" value="1" />
+            <button id="agregarCarrito">Agregar al carrito</button> 
+        </aside>
+    </main> 
+    <footer>
+        <p>© 2024 Mighty Chicken</p>
+    </footer>
+    <script src="/javascript/productos.js"></script>
+</body>
+</html>

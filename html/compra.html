@@ -1,40 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<ml lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/compra.css" >
 </head>
-
-<body>
+<body>  
 <header>
     <a href="#" class="logo">
         <img src="/img/logo.jpeg" alt="logo de la empresa" class="logo-img">
         <h1 class="nombre">MIGTHY CHICKEN</h1>
-       </a>
+    </a>
 </header>
+<div id="errorMensaje"></div>
 
 <main>
-    <label for="">NOMBRE</label><br>
-    <input type="text" ><br>
-    <label for="">PRESUPUESTO MAXIMO</label><br>
-    <input type="number" ><br>
-    <label for="">ARTICULOS MAXIMOS</label><br>
-    <input type="number" ><br>
-    <label for="">DIRECCION</label><br>
-    <input type="text" ><br>
-    <label for="">TIPO DE ENTREGA</label><br>
-    <input type="radio"> <label for="">DOMICILIO</label><br>
-    <input type="radio"> <label for="">PUNTO FISICO</label><br>
+    <label for="nombre">NOMBRE</label><br>
+    <input type="text" id="nombre" placeholder="Nombre"/><br>
+
+    <label for="presupuesto">PRESUPUESTO MAXIMO</label><br>
+    <input type="number" id="presupuesto"  placeholder="$0.00"> <br>
+
+    <label for="cantidad">ARTICULOS MAXIMOS</label><br>
+    <input type="number" id="cantidad" placeholder="0" ><br>
+
+    <label for="direccion">DIRECCION</label><br>
+    <input type="text"  id="direccion" placeholder="Direccion" ><br>
+
+    <label>TIPO DE ENTREGA</label><br>
+    <input type="radio" id="domicilio" name="entrega" value="domicilio">
+    <label for="domicilio">DOMICILIO</label><br>
+    <input type="radio" id="fisico" name="entrega" value="fisico">
+    <label for="fisico">PUNTO FISICO</label><br>   
+
+    
 </main>
 <nav>
-    <input type="text" value="INGRESAR">
-    <input type="text" value="LIMPIAR">
+    <button onclick ="iniciar()">INICIAR COMPRA</button>
+    <button onclick="limpiar()">LIMPIAR</button>
 </nav>
 <footer>
     <p>Politica de Privacidad de Datos  &copy;</p>
     <p>For Andrés Aguirre </p>
 </footer>
-</div>
+<script src="/javascript/compra.js"></script>
 </body>
 </html>

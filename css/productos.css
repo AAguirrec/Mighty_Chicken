@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#productosLista {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+}
+
+.tarjetaProducto {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(25% - 20px); 
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin-bottom: 20px;  
+}
+
+.tarjetaProducto:hover {
+    transform: scale(1.05);
+}
+
+.tarjetaProducto img {
+    width: 70%;
+    height: auto;
+    max-height: 150px; 
+    object-fit: cover; 
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.tarjetaProducto h3 {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: #333;
+}
+
+.tarjetaProducto p {
+    font-size: 0.9rem;
+    color: #555;
+}
+#verDetalle {
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    width: 300px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-left: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#verDetalle img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+#verDetalle h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#verDetalle p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+#cantidadProducto {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
