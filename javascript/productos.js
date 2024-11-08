@@ -326,9 +326,8 @@ function detectarScroll() {
         cargarProductos();
     }
 }
-
 document.getElementById('cancelarCompra').addEventListener('click', () => {
-    window.location.href = 'index.html'; 
+    window.location.href ="/html/compra.html"; 
 });
 
 document.getElementById('completarCompra').addEventListener('click', () => {
@@ -339,10 +338,21 @@ document.getElementById('agregarCarrito').addEventListener('click', () => {
     const cantidad = parseInt(document.getElementById('cantidadProducto').value);
     if (isNaN(cantidad) || cantidad <= 0) {
         alert("Ingrese una cantidad válida.");
-    } else {
-        alert("Producto agregado al carrito.");
+        return;
     }
+
+    // Obtener el ID del producto y buscar sus datos
+    const idProducto = parseInt(document.getElementById('detalleIdProducto').value);
+    const producto = productpollos.find(p => p.product === idProducto);
+
+    // Añadir el producto al carrito
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.push({ ...producto, cantidad });
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    alert("Producto agregado al carrito.");
 });
+
 
 cargarProductos();
 window.addEventListener('scroll', detectarScroll);

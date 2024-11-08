@@ -105,3 +105,10 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+header, footer{
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+}

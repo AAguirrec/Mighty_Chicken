@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mighty Chicken - Carrito de Compras</title>
+    <link rel="stylesheet" href="/css/carrito.css">
+</head>
+<body>
+    <header>
+        <h1>Mighty Chicken - Resumen de Compra</h1>
+    </header>
+    <nav>
+        <button onclick="cancelPurchase()">Cancelar compra</button>
+        <button onclick="continueShopping()">Seguir comprando</button>
+    </nav>
+    <main>
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Imagen</th>
+
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaCarrito">
+                    <!-- Productos del carrito -->
+                </tbody>
+            </table>
+            
+            <p>Total: $<span id="totalCompra">0</span></p>
+            <p>Total con Domicilio: $<span id="totalFinal">0</span></p>
+            
+        </section>
+        <aside>
+            <!-- Sección para información de la tarjeta de crédito -->
+            <h2>Información de la Tarjeta</h2>
+            <label>Número de tarjeta:
+                <input type="text" id="cardNumber" maxlength="16">
+            </label>
+            <label>Fecha de expiración (MM/AA):
+                <input type="text" id="expirationDate" maxlength="5" placeholder="MM/AA">
+            </label>
+            <label>Código de seguridad:
+                <input type="password" id="securityCode" maxlength="3">
+                <button type="button" onclick="toggleSecurityCode()">👁️</button>
+            </label>
+            <label>Nombre del titular:
+                <input type="text" id="cardHolder">
+            </label>
+            <label>País de emisión:
+                <select id="country">
+                    <!-- Opciones de países -->
+                    <option>Colombia</option>
+                    <option>Argentina</option>
+                    <!-- Agregar al menos 10 opciones más -->
+                </select>
+            </label>
+            <label>Tipo de tarjeta:
+                <select id="cardType">
+                    <option>Mastercard</option>
+                    <option>Visa</option>
+                    <option>Prepagada</option>
+                </select>
+            </label>
+            <button onclick="clearFields()">Limpiar campos</button>
+            <button id="confirmPurchase" onclick="confirmPurchase()">Confirmar compra</button>
+        </aside>
+    </main>
+    <footer>
+        <p>© Mighty Chicken</p>
+    </footer>
+    <script src="/javascript/carrito.js"></script>
+</body>
+</html>
