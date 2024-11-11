@@ -1,4 +1,3 @@
-// Variables para gestionar el carrito y el total
 let totalCompra = 0;
 let totalFinal = 0;
 const costoDomicilio = 15000;
@@ -7,15 +6,17 @@ function updateTotal() {
     totalFinal = totalCompra + costoDomicilio;
     document.getElementById("totalCompra").textContent = totalCompra;
     document.getElementById("totalFinal").textContent = totalFinal;
+    console.log(totalCompra);
+    console.log(totalFinal);
 }
 
-function cancelPurchase() {
+function cancelarCompra() {
     if (confirm("¿Está seguro de cancelar la compra?")) {
-        window.location.href = "/html/productos.html";
+        window.location.href = "/html/compra.html";
     }
 }
 
-function continueShopping() {
+function continuarCompra() {
     window.location.href = "/html/productos.html";
 }
 
@@ -51,47 +52,48 @@ function confirmPurchase() {
 }
 
 function validatePurchase() {
-    // Validación de la tarjeta y condiciones de la compra
     const cardNumber = document.getElementById("cardNumber").value;
     const expirationDate = document.getElementById("expirationDate").value;
     const securityCode = document.getElementById("securityCode").value;
     if (cardNumber.length !== 16 || expirationDate.length !== 5 || securityCode.length !== 3) return false;
-    return true;  // Añadir más validaciones si es necesario
+    return true;  
 }
+
 function cargarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const tablaCarrito = document.getElementById('tablaCarrito');
+    const totalCompraElement = document.getElementById('totalCompra');
+
     let totalCompra = 0;
 
     tablaCarrito.innerHTML = "";
 
+    if (carrito.length === 0) {
+        tablaCarrito.innerHTML = "<tr><td colspan='6'>No hay productos en el carrito.</td></tr>";
+    }
+
     carrito.forEach((producto, index) => {
+        const subtotal = producto.Precio * producto.cantidad;
+        totalCompra+= subtotal;
         const fila = document.createElement('tr');
         fila.innerHTML = `
             <td>${producto.nombre}</td>
-                        <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: auto;"></td>
-
+            <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: auto;"></td>
             <td>$${producto.Precio}</td>
             <td>${producto.cantidad}</td>
-            <td>$${producto.Precio * producto.cantidad}</td>
+            <td>$${(producto.Precio * producto.cantidad)}</td>
             <td><button onclick="eliminarProducto(${index})">Eliminar</button></td>
         `;
         tablaCarrito.appendChild(fila);
-        totalCompra += producto.Precio * producto.cantidad;
+    
     });
 
-    document.getElementById('totalCompra').textContent = totalCompra;
+    updateTotal(); 
 }
-//document.addEventListener('DOMContentLoaded', cargarCarrito);
-
-
 function eliminarProducto(index) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carrito.splice(index, 1); // Elimina el producto del carrito
-    localStorage.setItem('carrito', JSON.stringify(carrito)); // Actualiza el carrito en localStorage
-    cargarCarrito(); // Vuelve a cargar la tabla del carrito
+    carrito.splice(index, 1);  
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    cargarCarrito();  
 }
-
-// Asegúrate de cargar el carrito cuando se cargue la página
-window.onload = cargarCarrito;
-
+window.addEventListener('load', cargarCarrito);

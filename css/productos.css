@@ -1,14 +1,14 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #FFD700;
 }
 
 main {
     display: flex;
     justify-content: space-between;
-
 }
 
 #productosLista {
@@ -20,12 +20,12 @@ main {
 }
 
 .tarjetaProducto {
-    border: 1px solid #ddd;
+    border: 1px solid black;
     border-radius: 8px;
     padding: 10px;
     width: calc(25% - 20px); 
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: #B8860B;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
     margin-bottom: 20px;  
@@ -47,22 +47,24 @@ main {
 .tarjetaProducto h3 {
     font-size: 1rem;
     margin: 8px 0;
-    color: #333;
+    font-weight: 700;
 }
 
 .tarjetaProducto p {
     font-size: 0.9rem;
-    color: #555;
+    font-weight: 700;
 }
+
 #verDetalle {
     position: sticky;
     top: 20px;
     align-self: flex-start;
     width: 300px;
-    border: 1px solid #ddd;
+    border: 1px solid black;
+    font-weight: bold;
     padding: 20px;
     margin-left: 20px;
-    background-color: #fff;
+    background-color: #CFB53B;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -73,6 +75,7 @@ main {
     max-height: 200px;
     object-fit: cover;
     border-radius: 4px;
+    font-weight: bold;
 }
 
 #verDetalle h2 {
@@ -82,7 +85,12 @@ main {
 
 #verDetalle p {
     font-size: 0.9rem;
-    color: #333;
+    font-weight: bold;
+    color: black;
+}
+
+#verDetalle button{
+    margin-top: 10px;
 }
 
 #cantidadProducto {
@@ -94,21 +102,65 @@ main {
 
 button {
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: #D9A800;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: yellow;
 }
 
-header, footer{
+header{
+    background-color: #B8860B;
+    padding: 15px;
     text-align: center;
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
+    color: black; 
+    font-weight: bold;
+}
+
+header .logo {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+header .logo-img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;    
+}
+
+header .nombre {
+    font-size: 28px;
+    margin: 0;
+}
+
+footer {
+    background-color: #B8860B;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding: 5px;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px; 
+}
+
+#cancelarCompra {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #D9A800; 
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }

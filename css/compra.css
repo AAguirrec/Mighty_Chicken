@@ -2,12 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color:   #FFD700;
     color: #090909;
 }
 
 header {
-    background-color: rgb(142, 224, 224);
+    background-color: #DAA520;
     padding: 15px;
     text-align: center;
     color: black;    
@@ -36,7 +36,7 @@ main {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #da9090;
+    background-color: #DAA520;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -64,22 +64,25 @@ main input[type="radio"] {
 nav {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-nav input[type="text"] {
-    background-color: hsl(235, 85%, 40%);
+nav button {
     border: none;
     padding: 10px;
-    margin: 0 5px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     text-align: center;
+    margin: 0 15px; 
+}
+button:hover {
+    background-color: yellow;
 }
 
 footer {
-    background-color: #a134a9;
+    background-color: #DAA520;
+    font-weight: bold;
     color: black;
     text-align: center;
     padding: 5px;

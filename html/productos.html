@@ -8,11 +8,29 @@
 </head>
 <body>
     <header>
-        <h1>Mighty Chicken - Productos</h1>
+        <a href="/html/compra.html" class="logo">
+            <img src="/img/logo.jpeg" alt="logo de la empresa" class="logo-img">
+            <h1 class="nombre">PRODUCTOS</h1>
+        </a>
         <nav>
             <button id="cancelarCompra">Cancelar Compra</button>
-            <button id="completarCompra">Completar Compra</button>
         </nav>
+        <form id="filtrosForm">
+            <select id="filtroCategoria">
+                <option value="">Filtrar por categoría</option>
+                <option value="Pollo Fresco">Pollo Fresco</option>
+                <option value="Pollo Campesino">Pollo Campesino</option>
+                <option value="Bandejas">Bandejas</option>
+                <option value="Especialproductades de Pollo">Especialidades de Pollo</option>
+                <option value="Salsamentaria">Salsamentaria</option>
+            </select>
+            <label for="filtroPrecioMin">Precio Mínimo:</label>
+            <input type="number" id="filtroPrecioMin" placeholder="Precio Min">
+            <label for="filtroPrecioMax">Precio Máximo:</label>
+            <input type="number" id="filtroPrecioMax" placeholder="Precio Max">
+            <button type="submit">Aplicar Filtros</button>
+            <button type="button" id="limpiarFiltros">Limpiar Filtros</button> 
+        </form>
     </header> 
     <main>
         <section id="productosLista"> </section>
@@ -24,9 +42,9 @@
             <p id="detallePrecio"></p>
             <label for="cantidadProducto">Cantidad:</label>
             <input type="number" id="cantidadProducto" min="1" value="1" />
-            <button id="agregarCarrito">Agregar al carrito</button> 
+            <button id="agregarCarrito">Agregar al carrito</button>
+            <button id="completarCompra">Completar Compra</button>  
             <input type="hidden" id="detalleIdProducto" value="" />
-
         </aside>
     </main> 
     <footer>

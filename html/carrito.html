@@ -8,11 +8,14 @@
 </head>
 <body>
     <header>
-        <h1>Mighty Chicken - Resumen de Compra</h1>
-    </header>
+        <a href="/html/compra.html" class="logo">
+            <img src="/img/logo.jpeg" alt="logo de la empresa" class="logo-img">
+            <h1 class="nombre">Carrito de Compra</h1>
+        </a>
+        </header>
     <nav>
-        <button onclick="cancelPurchase()">Cancelar compra</button>
-        <button onclick="continueShopping()">Seguir comprando</button>
+        <button onclick="cancelarCompra()">Cancelar compra</button>
+        <button onclick="continuarCompra()">Seguir comprando</button>
     </nav>
     <main>
         <section>
@@ -21,7 +24,6 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Imagen</th>
-
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Subtotal</th>
@@ -29,7 +31,6 @@
                     </tr>
                 </thead>
                 <tbody id="tablaCarrito">
-                    <!-- Productos del carrito -->
                 </tbody>
             </table>
             
@@ -38,7 +39,6 @@
             
         </section>
         <aside>
-            <!-- Sección para información de la tarjeta de crédito -->
             <h2>Información de la Tarjeta</h2>
             <label>Número de tarjeta:
                 <input type="text" id="cardNumber" maxlength="16">
@@ -55,10 +55,15 @@
             </label>
             <label>País de emisión:
                 <select id="country">
-                    <!-- Opciones de países -->
                     <option>Colombia</option>
                     <option>Argentina</option>
-                    <!-- Agregar al menos 10 opciones más -->
+                    <option>Chile</option>
+                    <option>Ecuador</option>
+                    <option>Bolivia</option>
+                    <option>Brazil</option>
+                    <option>Uruaguay</option>
+                    <option>Paraguay</option>
+                    <option>Mexico</option>
                 </select>
             </label>
             <label>Tipo de tarjeta:
