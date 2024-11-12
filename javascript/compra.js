@@ -50,5 +50,4 @@ function limpiar() {
     document.getElementById('cantidad').value = '';
     document.getElementById('direccion').value = '';
     document.getElementsByName("entrega").forEach(radio => radio.checked = false);
-
 }
