@@ -1,18 +1,15 @@
-let totalCompra = 0;
 let totalFinal = 0;
 const costoDomicilio = 15000;
 
-function updateTotal() {
-    totalFinal = totalCompra + costoDomicilio;
-    document.getElementById("totalCompra").textContent = totalCompra;
-    document.getElementById("totalFinal").textContent = totalFinal;
-    console.log(totalCompra);
-    console.log(totalFinal);
+    function updateTotal(totalCompra = 0, totalFinal = costoDomicilio) {
+    document.getElementById("totalCompra").textContent = `$${totalCompra}`;
+    document.getElementById("totalFinal").textContent = `$${totalFinal}`;
 }
 
 function cancelarCompra() {
     if (confirm("¿Está seguro de cancelar la compra?")) {
-        window.location.href = "/html/compra.html";
+        localStorage.removeItem('carrito');
+        window.location.href = "/html/productos.html";
     }
 }
 
@@ -20,29 +17,30 @@ function continuarCompra() {
     window.location.href = "/html/productos.html";
 }
 
-function clearFields() {
-    document.getElementById("cardNumber").value = "";
-    document.getElementById("expirationDate").value = "";
-    document.getElementById("securityCode").value = "";
-    document.getElementById("cardHolder").value = "";
-    document.getElementById("country").selectedIndex = 0;
-    document.getElementById("cardType").selectedIndex = 0;
+function borrarcampos() {
+    document.getElementById("numtarjeta").value = "";
+    document.getElementById("fechaexp").value = "";
+    document.getElementById("codsegur").value = "";
+    document.getElementById("tittarjeta").value = "";
+    document.getElementById("pais").selectedIndex = 0;
+    document.getElementById("tiptarjeta").selectedIndex = 0;
 }
 
-function toggleSecurityCode() {
-    const securityCode = document.getElementById("securityCode");
-    securityCode.type = securityCode.type === "password" ? "text" : "password";
+function togglecodsegur() {
+    const codsegur = document.getElementById("codsegur");
+    codsegur.type = codsegur.type === "password" ? "text" : "password";
 }
 
-function confirmPurchase() {
-    const confirmButton = document.getElementById("confirmPurchase");
+function confirmcompra() {
+    const confirmButton = document.getElementById("confirmcompra");
     confirmButton.disabled = true;
     new Promise((resolve, reject) => {
-        const valid = validatePurchase();
+        const valid = validarcompra();
         setTimeout(() => valid ? resolve() : reject("Error en la información de la compra."), Math.random() * 1000 + 2000);
     })
     .then(() => {
         alert("Pago realizado con éxito. Serás redirigido a la página principal.");
+        localStorage.removeItem('carrito');
         window.location.href = "/html/compra.html";
     })
     .catch(error => {
@@ -51,18 +49,31 @@ function confirmPurchase() {
     });
 }
 
-function validatePurchase() {
-    const cardNumber = document.getElementById("cardNumber").value;
-    const expirationDate = document.getElementById("expirationDate").value;
-    const securityCode = document.getElementById("securityCode").value;
-    if (cardNumber.length !== 16 || expirationDate.length !== 5 || securityCode.length !== 3) return false;
+function validarcompra() {
+    const numtarjeta = document.getElementById("numtarjeta").value;
+    const fechaexp = document.getElementById("fechaexp").value;
+    const codsegur = document.getElementById("codsegur").value;
+    if (numtarjeta.length !== 16 || fechaexp.length !== 5 || codsegur.length !== 3) {
+    return false;
+}
     return true;  
 }
+
+document.getElementById("numtarjeta").addEventListener("input", function(event) {
+    let input = event.target.value;
+    input = input.replace(/\D/g, ''); 
+    let formattedInput = '';
+    for (let i = 0; i < input.length; i += 4) {
+        formattedInput += input.substring(i, i + 4); 
+    }
+    event.target.value = formattedInput.trim();
+});
+
 
 function cargarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const tablaCarrito = document.getElementById('tablaCarrito');
-    const totalCompraElement = document.getElementById('totalCompra');
+    const presupuesto = parseFloat(localStorage.getItem('presupuesto'));
 
     let totalCompra = 0;
 
@@ -70,6 +81,10 @@ function cargarCarrito() {
 
     if (carrito.length === 0) {
         tablaCarrito.innerHTML = "<tr><td colspan='6'>No hay productos en el carrito.</td></tr>";
+        totalFinal = costoDomicilio;
+
+        updateTotal(0, costoDomicilio);
+        return;
     }
 
     carrito.forEach((producto, index) => {
@@ -85,10 +100,15 @@ function cargarCarrito() {
             <td><button onclick="eliminarProducto(${index})">Eliminar</button></td>
         `;
         tablaCarrito.appendChild(fila);
-    
-    });
 
-    updateTotal(); 
+    });
+    totalFinal = carrito.length > 0 ? totalCompra + costoDomicilio : costoDomicilio;
+    updateTotal(totalCompra, totalFinal);
+
+    if (totalFinal > presupuesto) {
+        alert(`El total de la compra ($${totalFinal}) excede el presupuesto especificado de $${presupuesto}.`);
+    }
+
 }
 function eliminarProducto(index) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];

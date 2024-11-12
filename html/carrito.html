@@ -32,29 +32,29 @@
                 </thead>
                 <tbody id="tablaCarrito">
                 </tbody>
-            </table>
-            
-            <p>Total: $<span id="totalCompra">0</span></p>
-            <p>Total con Domicilio: $<span id="totalFinal">0</span></p>
-            
+            </table> 
+<div>
+    <p id="totalCompra"></p>
+    <p id="totalFinal"></p>
+</div>
         </section>
         <aside>
             <h2>Información de la Tarjeta</h2>
             <label>Número de tarjeta:
-                <input type="text" id="cardNumber" maxlength="16">
+                <input type="text" id="numtarjeta" maxlength="16">
             </label>
             <label>Fecha de expiración (MM/AA):
-                <input type="text" id="expirationDate" maxlength="5" placeholder="MM/AA">
+                <input type="text" id="fechaexp" maxlength="5" placeholder="MM/AA">
             </label>
             <label>Código de seguridad:
-                <input type="password" id="securityCode" maxlength="3">
-                <button type="button" onclick="toggleSecurityCode()">👁️</button>
+                <input type="password" id="codsegur" maxlength="3">
+                <button type="button" onclick="togglecodsegur()">👁️</button>
             </label>
             <label>Nombre del titular:
-                <input type="text" id="cardHolder">
+                <input type="text" id="tittarjeta">
             </label>
             <label>País de emisión:
-                <select id="country">
+                <select id="pais">
                     <option>Colombia</option>
                     <option>Argentina</option>
                     <option>Chile</option>
@@ -67,14 +67,14 @@
                 </select>
             </label>
             <label>Tipo de tarjeta:
-                <select id="cardType">
+                <select id="tiptarjeta">
                     <option>Mastercard</option>
                     <option>Visa</option>
                     <option>Prepagada</option>
                 </select>
             </label>
-            <button onclick="clearFields()">Limpiar campos</button>
-            <button id="confirmPurchase" onclick="confirmPurchase()">Confirmar compra</button>
+            <button onclick="borrarcampos()">Limpiar campos</button>
+            <button id="confirmcompra" onclick="confirmcompra()">Confirmar compra</button>
         </aside>
     </main>
     <footer>
