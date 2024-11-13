@@ -2,8 +2,8 @@ let totalFinal = 0;
 const costoDomicilio = 15000;
 
     function updateTotal(totalCompra = 0, totalFinal = costoDomicilio) {
-    document.getElementById("totalCompra").textContent = `$${totalCompra}`;
-    document.getElementById("totalFinal").textContent = `$${totalFinal}`;
+    document.getElementById("totalCompra").textContent = `Total Compra: ${totalCompra}`;
+    document.getElementById("totalFinal").textContent = `Total Final: ${totalFinal}`;
 }
 
 function cancelarCompra() {
